@@ -29,27 +29,47 @@ public class PrintMethods {
             default:
         }
     }
-        public void addGame (Games game) {
-            System.out.println("Podaj tytuł gry:");
-            game.setTitle(input.nextLine());
-            System.out.println("Podaj serię do której należy "+game.getTitle());
-            game.setSeries(input.nextLine());
-            System.out.println("Na jakiej platformie grasz?");
-            game.setPlatform(input.nextLine());
-            System.out.println("W którym roku była premiera"+game.getTitle());
-            game.setPublishingDate(input.nextInt());
-            System.out.print(game.getTitle() + "; "  + "; " + game.getPlatform()
-                    + "; " + game.getPublishingDate() + "; ");
-            if (game.isMainSpinoff() == true) {
-                System.out.print("Główna seria");
-            } else {
-                System.out.print("Spin-Off");
-            }
-            System.out.print("; " + game.getPartInSeries() + "; " + game.getDeveloper() + "; "
-                    + game.getPublisher());
 
+    public void isGameMain(Games game) {
+        if (game.getMainSpin() == 1) {
+            System.out.print("Main series");
+        } else if (game.getMainSpin() == 2) {
+            System.out.print("Spin-off");
+        } else {
+            System.out.print("There where just two options lol");
         }
     }
+
+    public void addGame(Games game) {
+        System.out.println("What is your game title?");
+        game.setTitle(input.nextLine());
+        System.out.println("From what series " + game.getTitle()+" is?");
+        game.setSeries(input.nextLine());
+        System.out.println("On which platform do you play "+game.getTitle()+"?");
+        game.setPlatform(input.nextLine());
+        System.out.println("From what year is " + game.getTitle()+"?");
+        game.setPublishingDate(input.nextInt());
+        System.out.println("Press \"1\" if " + game.getTitle() +
+                " is main series.\nPress \"2\" if its Spin-off.");
+        game.setMainSpin(input.nextInt());
+        System.out.println("Which part of a "+game.getSeries()+" series "
+                +game.getTitle()+" is? (Only numbers allowed)");
+        game.setPartInSeries(input.nextInt());
+        input.nextLine();
+        System.out.println("Who created "+game.getTitle()+"?");
+        game.setDeveloper(input.nextLine());
+        System.out.println("Who published "+game.getTitle()+"?");
+        game.setPublisher(input.nextLine());
+        System.out.println("\n");
+        System.out.println("Dodana przez ciebie gra to:\n");
+        System.out.print(game.getTitle() + "; " + game.getSeries()
+                + "; " + game.getPlatform() + "; "
+                + game.getPublishingDate() + "; ");
+        isGameMain(game);
+        System.out.println("; "+game.getPartInSeries()+"; "+game.getDeveloper()+"; "
+        +game.getPublisher()+"; ");
+    }
+}
 
 
 

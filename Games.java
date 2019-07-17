@@ -2,17 +2,16 @@ package content;
 
 public class Games {
     private String title, series, platform, developer, publisher;
-    private int publishingDate, partInSeries;
-    private boolean mainSpinoff;
+    private int publishingDate, partInSeries, mainSpin;
 
-    Games(String title, String series, String platform, int publishingDate,
-          boolean mainSpinoff, int partInSeries, String developer,
+    public Games(String title, String series, String platform, int publishingDate,
+          int mainSpin, int partInSeries, String developer,
           String publisher){
         this(title, series, platform, publishingDate, developer, publisher);
         this.partInSeries = partInSeries;
-        this.mainSpinoff = mainSpinoff;
+        this.mainSpin = mainSpin;
     }
-    Games(String title, String series, String platform, int publishingDate,
+    public Games(String title, String series, String platform, int publishingDate,
           String developer, String publisher){
         this.title = title;
         this.series = series;
@@ -21,7 +20,7 @@ public class Games {
         this.developer = developer;
         this.publisher = publisher;
     }
-    Games(){
+    public Games(){
     }
 
     public String getTitle(){
@@ -52,11 +51,11 @@ public class Games {
         this.publishingDate = publishingDate;
     }
 
-    public boolean isMainSpinoff(){
-        return mainSpinoff;
+    public int getMainSpin(){
+        return mainSpin;
     }
-    public void setMainSpinoff(boolean mainSpinoff){
-        this.mainSpinoff = mainSpinoff;
+    public void setMainSpin(int mainSpin){
+        this.mainSpin = mainSpin;
     }
 
     public int getPartInSeries(){
